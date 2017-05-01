@@ -10,12 +10,20 @@ import org.springframework.stereotype.Component;
  * Created by Igor Orekhov on 01.05.17.
  */
 
+/**
+ * Annotates as Aspect class
+ */
 @Aspect
+
+/**
+ * Aspect should be marked as @Bean or @Component for ApplicationContext
+ */
 @Component
 public class MyAspect {
-    @Before("execution(* com.johnremboo.spring.aop.Service+.*(..))")
+
+    /* Join Point ----> */ @Before(/* Point Cut ----> */ "execution(* com.johnremboo.spring.aop.Service+.*(..))")
     public void before(JoinPoint joinPoint) {
-        System.out.println("Before: " + joinPoint.getSignature().getName());
+        /* Advice ----> */ System.out.println("Before: " + joinPoint.getSignature().getName());
     }
 
     @After("execution(* com.johnremboo.spring.aop.Service+.*(..))")
