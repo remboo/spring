@@ -2,8 +2,10 @@ package com.johnremboo.spring.aop;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -21,7 +23,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyAspect {
 
-    /* Join Point ----> */ @Before(/* Point Cut ----> */ "execution(* com.johnremboo.spring.aop.Service+.*(..))")
+    /* Advice type ----> */ @Before(/* Point Cut ----> */ "execution(* com.johnremboo.spring.aop.Service+.*(..))")
     public void before(JoinPoint joinPoint) {
         /* Advice ----> */ System.out.println("Before: " + joinPoint.getSignature().getName());
     }
